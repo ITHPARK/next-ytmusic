@@ -4,6 +4,7 @@ import {sleep} from '@/lib/utils'
 //()로 묶인 디렉토리 이름은 경로에 영향을 주지 않는다.
 
 import React from 'react'
+import Category from './components/Category'
 
 
 
@@ -20,11 +21,9 @@ const page = async() => {
   */
 
   
-
-
   return (
-    <div className="">
-      HomePage
+    <div className="min-h-[600px]">
+      <Category></Category>
     </div>
   );
 }
