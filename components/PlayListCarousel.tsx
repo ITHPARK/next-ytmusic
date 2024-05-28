@@ -1,0 +1,66 @@
+import React from 'react'
+import {PlayList} from "@/types";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import PlayListCard from '@/components/PlayListCard';
+
+interface PlayListCarouselProps {
+   title: string;
+
+   //?는 키값이 있을 때 만 적용
+   subTitle?: String; 
+
+   //리액트 컴포넌트 자체를 넘기는것
+   Thumbnail?: React.ReactNode
+   playlistArray?: PlayList[];
+}
+
+
+//타입스크립트 컴포넌트
+const PlayListCarousel:React.FC<PlayListCarouselProps> = ({
+    title,
+    subTitle,
+    Thumbnail,
+    playlistArray
+}) => {
+  return (
+    <div className='w-full'>
+        <Carousel
+
+        >
+          <div className='flex flex-row justify-between items-end my-2'>
+            <article className='flex flex-row gap-3'>
+              {Thumbnail}
+              <div className='flex flex-col justify-center'>
+                  {subTitle && <div className='text-neutral-500'>{subTitle}</div>}
+                  <div className='text-[34px] font-bold leading-[34px]'>{title}</div>
+              </div>
+            </article>
+            <div className='relative left-[45px]'>
+              <div className='absolute bottom-[20px]'>
+                <CarouselPrevious className='right-2'/>
+                <CarouselNext className='left-2'/>
+              </div>
+            </div>
+          </div>
+          <CarouselContent className='mt-4'>
+            {playlistArray.map((playlist, index) => (
+              <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 ">
+                <PlayListCard playlist={playlist}/>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          
+        </Carousel>
+    </div>
+  )
+}
+
+
+
+export default PlayListCarousel

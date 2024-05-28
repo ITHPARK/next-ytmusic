@@ -13,14 +13,12 @@ const Navigator = () => {
 
   const pathname = usePathname();
 
-  console.log(pathname)
-
   //네비게이션 데이터
   const routes = useMemo(() => {
     return [
       {icon: <GoHome size={24}/>, label: "홈", isActive: pathname === '/', href: "/"},
-      {icon: <FiCompass size={24}/>, label: "둘러보기", isActive: pathname === '/explore', href: "/"},
-      {icon: <FiMusic size={24}/>, label: "보관함", isActive: pathname === '/library', href: "/"},
+      {icon: <FiCompass size={24}/>, label: "둘러보기", isActive: pathname === '/explore', href: "/explore"},
+      {icon: <FiMusic size={24}/>, label: "보관함", isActive: pathname === '/library', href: "/library"},
     ]
   },[pathname]);
 
