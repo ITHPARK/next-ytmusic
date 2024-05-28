@@ -7,7 +7,7 @@ import {FiCompass, FiMusic, FiPlus} from  'react-icons/fi';
 import Link from 'next/link';
 import { cn } from "@/lib/utils";
 import {dummyPlaylistArray} from "@/lib/dummyData";
-import PlaylistNav from './PlaylistNav';
+import PlayListNav from './PlayListNav';
 
 const Navigator = () => {
 
