@@ -1,10 +1,13 @@
 "use client";
 
+import usePlayerState from "@/hooks/usePlayerState";
 import React from "react";
 import { IoMdPlayCircle } from "react-icons/io";
 
 
 const PlayListNav = ({playlist}) => {
+    const {addSongList} = usePlayerState();
+
     //props로 전달받은 dummyData 플레이리스트 데이터 
     const {
         id,
@@ -15,7 +18,7 @@ const PlayListNav = ({playlist}) => {
 
 
     const onClickPlay = () => {
-    // addSongList(songList);
+        addSongList(songList);
     };
 
   return (

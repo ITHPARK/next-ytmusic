@@ -13,7 +13,7 @@ const WhiteButton = ({
     <div
       onClick={onClick}
       className={cn(
-        " cursor-pointer bg-white hover:bg-neutral-200 text-black rounded-2xl flex flex-row items-center justify-center min-w-[80px] h-[36px]  gap-2 ",
+        " cursor-pointer bg-white hover:bg-neutral-200 text-black rounded-2xl flex flex-row items-center justify-center min-w-[80px] h-[36px]  gap-2  px-[8px]",
         className
       )}
       {...props}

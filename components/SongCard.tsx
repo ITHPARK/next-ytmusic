@@ -17,11 +17,11 @@ interface SongCardProps {
 }
 
 const SongCard: React.FC<SongCardProps> = ({ song }) => {
-  // const { addSongList } = usePlayerState();
+  const { addSongList } = usePlayerState();
 
-  // const onClickPlay = () => {
-  //   addSongList([song]);
-  // };
+  const onClickPlay = () => {
+    addSongList([song]);
+  };
 
   return (
     <article
@@ -31,7 +31,7 @@ const SongCard: React.FC<SongCardProps> = ({ song }) => {
       <div className=" w-[48px] h-[48px] relative">
         <Image src={song.imageSrc} alt="img" fill className=" object-cover" />
         <section
-          // onClick={onClickPlay}
+          onClick={onClickPlay}
           className="hidden group-hover:flex absolute top-0 w-[48px] h-[48px] items-center justify-center bg-black
         cursor-pointer
         "

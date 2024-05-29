@@ -7,7 +7,7 @@ import { getRandomElementFromArray } from "@/lib/utils";
 import WhiteButton from "@/components/elements/WhiteButton";
 import DarkButton from "@/components/elements/DarkButton";
 import { FiFolderPlus } from "react-icons/fi";
-// import usePlayerState from "@/hooks/usePlayerState";
+import usePlayerState from "@/hooks/usePlayerState";
 
 //props의 값이 주어지지 않을 경우 빈객체로 설정 
 const PlayListHead = ({ playlist = {} } = {}) => {
@@ -18,11 +18,11 @@ const PlayListHead = ({ playlist = {} } = {}) => {
   
   const randomSong = getRandomElementFromArray(songList);
 
-  // const { addSongList } = usePlayerState();
+  const { addSongList } = usePlayerState();
 
-  // const onClickPlayList = () => {
-  //   addSongList(songList);
-  // };
+  const onClickPlayList = () => {
+    addSongList(songList);
+  };
 
   return (
     <section>
@@ -41,7 +41,7 @@ const PlayListHead = ({ playlist = {} } = {}) => {
               className={"w-[85px] text-[14px]"}
               icon={<FiPlay />}
               label="재생"
-              // onClick={onClickPlayList}
+              onClick={onClickPlayList}
             />
             <DarkButton
               className={"w-[135px] text-[14px]"}
@@ -57,7 +57,7 @@ const PlayListHead = ({ playlist = {} } = {}) => {
           className={"w-[85px] text-[14px]"}
           icon={<FiPlay />}
           label="재생"
-          // onClick={onClickPlayList}
+          onClick={onClickPlayList}
         />
         <DarkButton
           className={"w-[135px] text-[14px]"}
