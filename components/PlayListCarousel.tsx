@@ -10,7 +10,7 @@ import {
 import PlayListCard from '@/components/PlayListCard';
 
 interface PlayListCarouselProps {
-   title: string;
+   title?: string;
 
    //?는 키값이 있을 때 만 적용
    subTitle?: String; 
