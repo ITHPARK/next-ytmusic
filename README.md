@@ -30,97 +30,19 @@
 
 
 ## 4. 프로젝트 제작을 하면서 느낀점
-### SASS를 활용
-- CSS 전처리기 SASS를 처음으로 프로젝트에 활용하며 mixins로 css 일부 레이아웃을 모듈화 또는 반응형 셋팅을 네이밍을 하여 설정해 가독성을 높이고, 코드의 중복을 줄이고, 유지보수를 쉽게 하는 편리함을 느낄 수 있었습니다.
+### Tailwind css사용
+- Tailwind css를 사용하여 레이아웃 디자인을 하였는데 별도의 css파일을 생성할 필요가 없이 태그 class에 할수 있어 스타일 작성하는데 있어서 좀더 빨랐지만 html및 코드의 가독성이 비교적 떨어질수 있다는것을 느꼈습니다.
 
-### Custom Hooks의 편리함 
-- 리액트에서 기본적으로 제공하는 useState, useEffect 등의 베이직 hooks가 아닌 특정 요소 외부를 클릭했을 때 특정요소를 닫거나, 입력란 입력을 할 때 한글자 입력할 때마다 데이터를 가지고 오는게 아닌 입력후 일정 설정한 시간 후에 입력란의 값을 할당
-하게 할 수있는 custom hook를 제작하여 여러 컴포넌트에서 import해서 사용 할 수 있었음에 편리함을 느꼈습니다.
-  
+### App Router 사용
+- Next.js의 파일 기반 라우팅 시스템은 매우 직관적이였고 app 디렉토리에 파일을 생성하는 것만으로 새로운 라우트를 추가할 수 있어 설정이 간단했습니다.
+
+
+### use client 사용
+- use client를 사용할 수 있어 페이지 인터렉션, 이벤트 등 클라이언트 측 요청을 처리해 SSR의 장점과 CSR의 장점을 합쳐 효과적인 개발을 할수 있다는것을 느꼈습니다.
  ```
-//입력후 일정 설정한 시간 후에 입력란의 값을 할당
-import React, {useState, useEffect} from 'react';
-
-const useDebounce = (value, delay) => {
-    const [debounceVal, setDebounceVal] = useState("");
-
-    useEffect(() => {
-      const timer = setTimeout(()=> {
-        setDebounceVal(value);
-      }, delay);
-    
-      return () => {
-        clearTimeout(timer);
-      }
-    }, [value]);
-
-    return debounceVal;
-}
-
-export default useDebounce;
 
 ```
 
 
-```
-//모달창 밖을 클릭했을 때 모달을 닫게하는 hooks
-import React, { useEffect, useState, useCallback, useRef, }  from 'react'
 
-export const useOnClickOutside = (ref, handler) => {
-    useEffect(() => {
-
-        //modal밖을 클릭했을 때 모달을 닫게 해주는 함수
-        const listener = (event) => {
-           
-            //현재 클릭한 요소의 ref가 존재하지 않거나 ref의 자식 요소면 모달을 안 닫는다.
-            if(!ref.current || ref.current.contains(event.target)) {
-                return;
-            }
-
-            //모달 밖에 요소니 모달을 닫아준다.
-            handler();
-        };
-        
-        document.addEventListener("mousedown", listener);
-        document.addEventListener("touchstart", listener);
-      return () => {
-        document.removeEventListener("mousedown", listener);
-        document.removeEventListener("touchstart", listener);
-      }
-    }, [ref, handler])
-}
-
-```
-
-```
-//화면 리사이즈를 감지하는 hooks
-import React, {useState, useEffect, } from 'react'
-
-const useResizeWidth = () => {
-
-    const [resizeWidth, setResizeWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-      const handleResize =() => {
-        setResizeWidth(window.innerWidth);
-      }
-  
-      //ResizeObserver는 브라우저api로 화면의 크기 변화를 감지하는 기능이다.
-      //화면 크기 변화가 감지되면 handleResize함수를 실행한다.
-      const resizeObserver = new ResizeObserver(handleResize);
-  
-      //observe는 감지할 대상을 지정하는것이다.
-      resizeObserver.observe(document.documentElement);
-  
-      return () => {
-        //컴포넌트 언마운트 될 때 지정된 관찰대상을 해제한다.
-        resizeObserver.disconnect();
-      }
-    }, [])
-    
-    return resizeWidth;
-}
-
-export default useResizeWidth
-```
 
