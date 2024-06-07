@@ -5,7 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious,
+  CarouselPrevious,  
 } from "@/components/ui/carousel";
 import { chunkArray } from "@/lib/utils";
 import GenreCard from "./GenreCard";

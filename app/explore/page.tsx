@@ -9,7 +9,7 @@ import GenreListCarousel from '@/components/GenreListCarousel';
 const page = async () => {
 
   //dummyData에서 데이터를 가져옴
-  //동시에 요청
+  //Promise.all 동시에 요청으로 병렬처리
   const [playlistArray, songListTop10] = await Promise.all([getAllPlaylist(), getSongListTop10()]);
 
 

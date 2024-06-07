@@ -17,7 +17,7 @@ interface PlayListPageProps {
 
 const page = async (props: PlayListPageProps) => {
 
-  //플레이리스트 가져오기 기존에
+  //플레이리스트 가져오기 
   const playlist = await getPlaylistById(Number(props.searchParams.list));
 
   //플레이리스트가 없으면 메인 페이지로 리다이렉트 시키는 서버 함수
